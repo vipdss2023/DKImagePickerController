@@ -65,8 +65,19 @@ open class DKImagePickerController: DKUINavigationController, DKImageBaseManager
     }
     
     /// false to prevent dismissal of the picker when the presentation controller will dismiss in response to user action.
+    ///@available(iOS 13.0, *)
+    ///@objc lazy public var shouldDismissViaUserAction = false
+
+    private var _shouldDismissViaUserAction: Bool = false 
     @available(iOS 13.0, *)
-    @objc lazy public var shouldDismissViaUserAction = false
+    var shouldDismissViaUserAction: Bool {
+        get {
+            return _shouldDismissViaUserAction
+        }
+        set {
+            _shouldDismissViaUserAction = newValue
+        }
+    }
     
     /// Forces deselect of previous selected image. allowSwipeToSelect will be ignored.
     @objc public var singleSelect = false
